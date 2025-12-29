@@ -1,0 +1,11 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background shape (Rounded Square) with darker color for Dark Mode -->
+    <rect x="2" y="2" width="36" height="36" rx="8" fill="#3574F0"/>
+    
+    <!-- Undo Arrow Shape -->
+    <path d="M28 26V23C28 19.134 24.866 16 21 16H12" stroke="#E0E0E0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 12L12 16L16 20" stroke="#E0E0E0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Decorative dot -->
+    <circle cx="12" cy="26" r="2.5" fill="#E0E0E0"/>
+</svg>
