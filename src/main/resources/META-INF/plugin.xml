@@ -1,0 +1,67 @@
+<!-- Plugin Configuration File: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN, cannot be changed between the plugin versions. -->
+    <id>io.github.sushkovpv.junie-undo-fix</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
+    <name>Junie Undo Fix</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <description><![CDATA[
+        Enter short description for your plugin here.<br>
+        <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.compose</depends>
+
+    <resource-bundle>messages.MyMessageBundle</resource-bundle>
+    <!-- Extensions defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="MyToolWindow" factoryClass="io.github.sushkovpv.junieundofix.MyToolWindowFactory"
+                    icon="AllIcons.Toolwindows.ToolWindowPalette"/>
+    </extensions>
+
+    <actions>
+        <group id="Junie.Chat.InputActions">
+            <action id="Junie.Chat.Undo"
+                    class="io.github.sushkovpv.junieundofix.ChatUndoAction"
+                    text="Chat Undo"
+                    use-shortcut-of="$Undo"
+            />
+            <action id="Junie.Chat.Redo"
+                    class="io.github.sushkovpv.junieundofix.ChatRedoAction"
+                    text="Chat Redo"
+                    use-shortcut-of="$Redo"
+            />
+            <action id="Junie.Chat.Backspace"
+                    class="io.github.sushkovpv.junieundofix.ChatBackspaceAction"
+                    text="Chat Backspace"
+                    use-shortcut-of="EditorBackSpace"
+            />
+            <action id="Junie.Chat.Copy"
+                    class="io.github.sushkovpv.junieundofix.ChatCopyAction"
+                    text="Chat Copy"
+                    use-shortcut-of="$Copy"
+            />
+            <action id="Junie.Chat.Paste"
+                    class="io.github.sushkovpv.junieundofix.ChatPasteAction"
+                    text="Chat Paste"
+                    use-shortcut-of="$Paste"
+            />
+            <action id="Junie.Chat.NewLine"
+                    class="io.github.sushkovpv.junieundofix.ChatNewLineAction"
+                    text="Chat New Line"
+            >
+                <keyboard-shortcut first-keystroke="shift ENTER" keymap="$default"/>
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
