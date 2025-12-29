@@ -35,7 +35,7 @@ intellijPlatform {
         }
 
         changeNotes = """
-            Initial version
+            Initial version. Added experimental fix for hotkeys in Junie tool window.
         """.trimIndent()
     }
 }

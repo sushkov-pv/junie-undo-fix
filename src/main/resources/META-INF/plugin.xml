@@ -8,13 +8,14 @@
     <name>Junie Undo Fix</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor url="https://github.com/sushkov-pv" email="sushkov.pavel.98@gmail.com">Pavel Sushkov</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
     <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
+        Experimental fix for hotkeys in the Junie tool window.<br>
+        This plugin restores Undo, Redo, Copy, Paste and other standard hotkeys in the Junie Compose interface.<br>
+        <strong>Warning:</strong> This is an experimental and unreliable fix that may be unstable.
     ]]></description>
 
     <!-- Product and plugin compatibility requirements.
