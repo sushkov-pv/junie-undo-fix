@@ -1,6 +1,7 @@
 package io.github.sushkovpv.junieundofix
 
 import com.intellij.openapi.actionSystem.*
+import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.util.SystemInfo
 import java.awt.Component
@@ -8,6 +9,7 @@ import java.awt.Container
 import java.awt.event.KeyEvent
 
 private val META_OR_CTRL_DOWN_MASK = if (SystemInfo.isMac) KeyEvent.META_DOWN_MASK else KeyEvent.CTRL_DOWN_MASK
+private val LOG = logger<JunieKeyAction>()
 
 fun Component.findSkiaLayer(): Component? {
     if (javaClass.name.contains("SkiaLayer", ignoreCase = true)) return this
@@ -60,12 +62,15 @@ private fun AnActionEvent.simulateComposeKeyEvent(
     keyCode: Int,
 ) {
     val toolWindow = getData(PlatformDataKeys.TOOL_WINDOW) ?: return
-    val skiaLayer = toolWindow.component.findSkiaLayer()
+    val skiaLayer = toolWindow.component.findSkiaLayer() ?: run {
+        LOG.error("Failed to find SkiaLayer component in tool window ${toolWindow.id}")
+        return
+    }
 
     val keyPress = KeyEvent(skiaLayer, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), modifiers, keyCode, KeyEvent.CHAR_UNDEFINED)
     val keyRelease = KeyEvent(skiaLayer, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), modifiers, keyCode, KeyEvent.CHAR_UNDEFINED)
 
-    skiaLayer?.keyListeners?.forEach {
+    skiaLayer.keyListeners.forEach {
         it.keyPressed(keyPress)
         it.keyReleased(keyRelease)
     }
