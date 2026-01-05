@@ -14,14 +14,14 @@ fun Component.findSkiaLayer(): Component? {
     return (this as? Container)?.components?.firstNotNullOfOrNull { it.findSkiaLayer() }
 }
 
-abstract class InvisibleKeyAction(
+abstract class JunieKeyAction(
     private val modifiers: Int,
     private val keyCode: Int,
 ) : AnAction(),
     DumbAware,
     ActionPromoter {
     override fun update(e: AnActionEvent) {
-        e.updateInvisibleAction()
+        e.updateHiddenJunieAction()
     }
 
     override fun getActionUpdateThread() = ActionUpdateThread.EDT
@@ -36,23 +36,23 @@ abstract class InvisibleKeyAction(
     ) = listOf(this)
 }
 
-class ChatUndoAction : InvisibleKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_Z)
+class JunieUndoAction : JunieKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_Z)
 
-class ChatRedoAction :
-    InvisibleKeyAction(
+class JunieRedoAction :
+    JunieKeyAction(
         if (SystemInfo.isMac) META_OR_CTRL_DOWN_MASK or KeyEvent.SHIFT_DOWN_MASK else META_OR_CTRL_DOWN_MASK,
         if (SystemInfo.isMac) KeyEvent.VK_Z else KeyEvent.VK_Y,
     )
 
-class ChatBackspaceAction : InvisibleKeyAction(0, KeyEvent.VK_BACK_SPACE)
+class JunieBackspaceAction : JunieKeyAction(0, KeyEvent.VK_BACK_SPACE)
 
-class ChatNewLineAction : InvisibleKeyAction(KeyEvent.SHIFT_DOWN_MASK, KeyEvent.VK_ENTER)
+class JunieNewLineAction : JunieKeyAction(KeyEvent.SHIFT_DOWN_MASK, KeyEvent.VK_ENTER)
 
-class ChatCopyAction : InvisibleKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_C)
+class JunieCopyAction : JunieKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_C)
 
-class ChatPasteAction : InvisibleKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_V)
+class JuniePasteAction : JunieKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_V)
 
-private fun AnActionEvent.updateVisibleAction() {
+private fun AnActionEvent.updateJunieActionAvailability() {
     presentation.isEnabledAndVisible = isJunieToolWindowActive()
 }
 
@@ -61,8 +61,8 @@ fun AnActionEvent.isJunieToolWindowActive(): Boolean {
     return toolWindow?.id == "ElectroJunToolWindow"
 }
 
-private fun AnActionEvent.updateInvisibleAction() {
-    updateVisibleAction()
+private fun AnActionEvent.updateHiddenJunieAction() {
+    updateJunieActionAvailability()
     presentation.isVisible = false
 }
 

@@ -28,35 +28,35 @@
     </extensions>
 
     <actions>
-        <group id="Junie.Chat.InputActions">
-            <action id="Junie.Chat.Undo"
-                    class="io.github.sushkovpv.junieundofix.ChatUndoAction"
-                    text="Chat Undo"
+        <group id="Junie.InputActions">
+            <action id="Junie.Undo"
+                    class="io.github.sushkovpv.junieundofix.JunieUndoAction"
+                    text="Junie Undo"
                     use-shortcut-of="$Undo"
             />
-            <action id="Junie.Chat.Redo"
-                    class="io.github.sushkovpv.junieundofix.ChatRedoAction"
-                    text="Chat Redo"
+            <action id="Junie.Redo"
+                    class="io.github.sushkovpv.junieundofix.JunieRedoAction"
+                    text="Junie Redo"
                     use-shortcut-of="$Redo"
             />
-            <action id="Junie.Chat.Backspace"
-                    class="io.github.sushkovpv.junieundofix.ChatBackspaceAction"
-                    text="Chat Backspace"
+            <action id="Junie.Backspace"
+                    class="io.github.sushkovpv.junieundofix.JunieBackspaceAction"
+                    text="Junie Backspace"
                     use-shortcut-of="EditorBackSpace"
             />
-            <action id="Junie.Chat.Copy"
-                    class="io.github.sushkovpv.junieundofix.ChatCopyAction"
-                    text="Chat Copy"
+            <action id="Junie.Copy"
+                    class="io.github.sushkovpv.junieundofix.JunieCopyAction"
+                    text="Junie Copy"
                     use-shortcut-of="$Copy"
             />
-            <action id="Junie.Chat.Paste"
-                    class="io.github.sushkovpv.junieundofix.ChatPasteAction"
-                    text="Chat Paste"
+            <action id="Junie.Paste"
+                    class="io.github.sushkovpv.junieundofix.JuniePasteAction"
+                    text="Junie Paste"
                     use-shortcut-of="$Paste"
             />
-            <action id="Junie.Chat.NewLine"
-                    class="io.github.sushkovpv.junieundofix.ChatNewLineAction"
-                    text="Chat New Line"
+            <action id="Junie.NewLine"
+                    class="io.github.sushkovpv.junieundofix.JunieNewLineAction"
+                    text="Junie New Line"
             >
                 <keyboard-shortcut first-keystroke="shift ENTER" keymap="$default"/>
             </action>
