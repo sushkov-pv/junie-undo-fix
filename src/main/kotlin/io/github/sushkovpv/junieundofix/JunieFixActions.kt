@@ -21,13 +21,16 @@ abstract class JunieKeyAction(
     DumbAware,
     ActionPromoter {
     override fun update(e: AnActionEvent) {
-        e.updateHiddenJunieAction()
+        val toolWindow = e.getData(PlatformDataKeys.TOOL_WINDOW)
+        val isJunieActive = toolWindow?.id == "ElectroJunToolWindow"
+        e.presentation.isEnabled = isJunieActive
+        e.presentation.isVisible = false
     }
 
     override fun getActionUpdateThread() = ActionUpdateThread.EDT
 
     override fun actionPerformed(e: AnActionEvent) {
-        e.simulateKeyEvent(modifiers, keyCode)
+        e.simulateComposeKeyEvent(modifiers, keyCode)
     }
 
     override fun promote(
@@ -52,21 +55,7 @@ class JunieCopyAction : JunieKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_C)
 
 class JuniePasteAction : JunieKeyAction(META_OR_CTRL_DOWN_MASK, KeyEvent.VK_V)
 
-private fun AnActionEvent.updateJunieActionAvailability() {
-    presentation.isEnabledAndVisible = isJunieToolWindowActive()
-}
-
-fun AnActionEvent.isJunieToolWindowActive(): Boolean {
-    val toolWindow = getData(PlatformDataKeys.TOOL_WINDOW)
-    return toolWindow?.id == "ElectroJunToolWindow"
-}
-
-private fun AnActionEvent.updateHiddenJunieAction() {
-    updateJunieActionAvailability()
-    presentation.isVisible = false
-}
-
-private fun AnActionEvent.simulateKeyEvent(
+private fun AnActionEvent.simulateComposeKeyEvent(
     modifiers: Int,
     keyCode: Int,
 ) {
