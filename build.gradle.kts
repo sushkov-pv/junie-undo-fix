@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.sushkovpv.junieundofix"
-version = "0.0.2"
+version = "0.0.3"
 
 repositories {
     mavenCentral()
@@ -32,7 +32,8 @@ intellijPlatform {
         }
 
         changeNotes = """
-            Initial version. Added experimental fix for hotkeys in Junie tool window.
+            0.0.3: Required IDE restart after plugin installation.<br>
+            0.0.1: Initial release. Experimental hotkey fix for Junie tool window.
         """.trimIndent()
     }
 }
