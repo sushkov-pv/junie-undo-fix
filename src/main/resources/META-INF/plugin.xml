@@ -13,8 +13,7 @@
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
     <description><![CDATA[
-        Experimental fix for hotkeys in the Junie tool window.<br>
-        This plugin restores Undo, Redo, Copy, Paste and other standard hotkeys in the Junie Compose interface.<br>
+        This plugin fixes <a href="https://youtrack.jetbrains.com/issue/JUNIE-51">JUNIE-51</a>: Undo (Cmd+Z) does not work in the Junie input field after various project actions like renaming or creating files.<br>
         <strong>Warning:</strong> This is an experimental and unreliable fix that may be unstable.
     ]]></description>
 
